@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    
+  </head>
+  <body>
+    <header>
+        <h1>Tic Tac Toe Game</h1>
+      </header><br>
+    <div class="container" id="gameBoard">
+      <div class="cell" onclick="makeMove(0)"></div>
+      <div class="cell" onclick="makeMove(1)"></div>
+      <div class="cell" onclick="makeMove(2)"></div>
+      <div class="cell" onclick="makeMove(3)"></div>
+      <div class="cell" onclick="makeMove(4)"></div>
+      <div class="cell" onclick="makeMove(5)"></div>
+      <div class="cell" onclick="makeMove(6)"></div>
+      <div class="cell" onclick="makeMove(7)"></div>
+      <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+
+      
+    <script>
+      let gameBoard = ['', '', '', '', '', '', '', '', ''];
+      let currentPlayer = 'X';
+      let gameOver = false;
+
+      function makeMove(index) {
+        if (gameBoard[index] === '' && !gameOver) {
+          gameBoard[index] = currentPlayer;
+          document.getElementById('gameBoard').children[index].textContent = currentPlayer;
+
+          if (checkWin(currentPlayer)) {
+            alert(currentPlayer + ' wins!');
+            resetGame();
+            return;
+          }
+
+          if (gameBoard.indexOf('') === -1) {
+            alert('It\'s a tie!');
+            resetGame();
+            return;
+          }
+
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+      }
+
+      function checkWin(player) {
+        const winningCombinations = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6]
+        ];
+
+        for (let combination of winningCombinations) {
+          if (
+            gameBoard[combination[0]] === player &&
+            gameBoard[combination[1]] === player &&
+            gameBoard[combination[2]] === player
+          ) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+
+      function resetGame() {
+        gameBoard = ['', '', '', '', '', '', '', '', ''];
+        currentPlayer = 'X';
+        gameOver = false;
+        document.getElementById('gameBoard').innerHTML = '';
+      }
+    </script>
+     <br><footer>
+        <p>Made by Saurabh</p>
+    
+      </footer>
+  </body>
+</html>
