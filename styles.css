@@ -37,13 +37,13 @@ body {
   /* Styles for mobile devices (max-width: 767px) */
   @media (max-width: 767px) {
     .container {
-      grid-template-columns: repeat(3, 80px);
-      width: 250px;
+      grid-template-columns: repeat(3, 120px); /* Increase the size for mobile */
+      width: 390px; /* Adjust container width for mobile */
     }
   
     .cell {
-      height: 80px;
-      font-size: 28px;
+      height: 120px; /* Increase cell height for mobile */
+      font-size: 40px; /* Adjust font size for mobile */
     }
   }
   
