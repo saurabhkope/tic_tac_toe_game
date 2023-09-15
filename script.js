@@ -1,4 +1,5 @@
 
+      
       let gameBoard = ['', '', '', '', '', '', '', '', ''];
       let currentPlayer = 'X';
       let gameOver = false;
@@ -55,4 +56,17 @@
         gameOver = false;
         document.getElementById('gameBoard').innerHTML = '';
       }
-  
+      const restartButton = document.getElementById('restartButton');
+      restartButton.addEventListener('click', restartGame());
+      function restartGame() {
+        // Clear the game board
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach(cell => {
+          cell.innerHTML = '';
+        });
+      
+        // Reset any game-related variables or states
+        // For example, you might need to reset the current player, game status, etc.
+      
+        // Perform any additional logic required to restart the game
+      }
