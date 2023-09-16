@@ -85,7 +85,12 @@ footer {
 .container-body {
 
   /* margin-top: 150px; */
-  padding-top:200px ;
-  margin-top: 50px;
+  /* padding-top:200px ;*/
+  margin-top: 200px; 
+ 
+}
 
+.bord {
+  border: 5px solid blue;
+  border-style:dotted;
 }
