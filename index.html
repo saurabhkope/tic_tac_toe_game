@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-  <div class="container-body">
-    <header>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div class="gradient-border">
+    <div class="container-body">
+      <header>
         <h1>Tic Tac Toe Game</h1>
         <p>Player 1 (X) vs. Player 2 (O)</p>
       </header>
-      
-    <div class="container" id="gameBoard">
+
+      <div class="container" id="gameBoard">
         <div class="cell" data-cell-index="0" onclick="makeMove(0)"></div>
         <div class="cell" data-cell-index="1" onclick="makeMove(1)"></div>
         <div class="cell" data-cell-index="2" onclick="makeMove(2)"></div>
@@ -23,11 +26,19 @@
         <div class="cell" data-cell-index="7" onclick="makeMove(7)"></div>
         <div class="cell" data-cell-index="8" onclick="makeMove(8)"></div>
       </div>
-  </div>
-  <button id="restartButton">Restart</button>  
-     <footer>
+
+      <div class="result">
+        <h2>Result</h2>
+        <div id="resultMessage"></div>
+      </div>
+      <center>
+        <button class="restartButton" onclick="clearGrid()">Restart</button>
+      </center>
+      <footer>
         Made by Saurabh
       </footer>
+    </div>
+  </div>
+</body>
 
-  </body>
 </html>
