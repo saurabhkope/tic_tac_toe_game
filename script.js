@@ -10,15 +10,21 @@
           document.getElementById('gameBoard').children[index].textContent = currentPlayer;
 
           if (checkWin(currentPlayer)) {
-            alert(currentPlayer + ' wins!');
-            resetGame();
-            return;
+           //alert(currentPlayer + ' wins!');
+           document.getElementById('resultMessage').textContent = "🎉🎉🎉"+currentPlayer + ' wins!'+"🎉🎉🎉";
+           //resetGame();
+           //clearGrid();
+           // return;
+           stop;
           }
 
           if (gameBoard.indexOf('') === -1) {
-            alert('It\'s a tie!');
-            resetGame();
-            return;
+            //alert('It\'s a tie!');
+            document.getElementById('resultMessage').textContent = "🤝🤝🤝"+'It\'s a tie!'+"🤝🤝🤝";
+            //resetGame();
+           // clearGrid();
+           // return;
+           stop;
           }
 
           currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
@@ -55,18 +61,13 @@
         currentPlayer = 'X';
         gameOver = false;
         document.getElementById('gameBoard').innerHTML = '';
+       //document.getElementById('resultMessage').textContent = '';
       }
-      const restartButton = document.getElementById('restartButton');
-      restartButton.addEventListener('click', restartGame());
-      function restartGame() {
-        // Clear the game board
+      function clearGrid() {
+        gameBoard = ['', '', '', '', '', '', '', '', ''];
         const cells = document.querySelectorAll('.cell');
         cells.forEach(cell => {
-          cell.innerHTML = '';
+          cell.textContent = '';
         });
-      
-        // Reset any game-related variables or states
-        // For example, you might need to reset the current player, game status, etc.
-      
-        // Perform any additional logic required to restart the game
+        document.getElementById('resultMessage').textContent = '';
       }
