@@ -14,7 +14,7 @@
            document.getElementById('resultMessage').textContent = "🎉🎉🎉"+currentPlayer + ' wins!'+"🎉🎉🎉";
            //resetGame();
            //clearGrid();
-           // return;
+           return;
            stop;
           }
 
@@ -23,7 +23,7 @@
             document.getElementById('resultMessage').textContent = "🤝🤝🤝"+'It\'s a tie!'+"🤝🤝🤝";
             //resetGame();
            // clearGrid();
-           // return;
+           return;
            stop;
           }
 
