@@ -12,6 +12,9 @@ body {
 
 
 }
+.opetion{
+  text-align: center;
+}
 
 header {
   text-align: center;
@@ -84,13 +87,43 @@ footer {
 }
 .container-body {
 
-  /* margin-top: 150px; */
-  /* padding-top:200px ;*/
-  margin-top: 200px; 
+  margin-top: 30px; 
  
 }
 
 .bord {
   border: 5px solid blue;
   border-style:dotted;
+}
+
+.box {
+  background-color: rebeccapurple;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  animation-name: rotate;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.box:hover {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.opetion{
+  list-style-type: none;
+    padding: 0;
+  margin: 0;
+}
+.opetion li{
+
 }
