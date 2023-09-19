@@ -2,31 +2,32 @@ let gameBoard = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 let gameOver = false;
 
+// Function to make a move on the game board
 function makeMove(index) {
   if (gameBoard[index] === '' && !gameOver) {
     var player1 = document.getElementById("player1").value;
-  var player2 = document.getElementById("player2").value;
+    var player2 = document.getElementById("player2").value;
     gameBoard[index] = currentPlayer;
     document.getElementById('gameBoard').children[index].textContent = currentPlayer;
-    // if (checkWin(currentPlayer)) {
-      
-    //   document.getElementById('resultMessage').textContent = "🎉🎉🎉" + currentPlayer + ' wins!' + "🎉🎉🎉";
-    //   return;
-    // }
-    // if (gameBoard.indexOf('') === -1) {
-    //   document.getElementById('resultMessage').textContent = "🤝🤝🤝" + 'It\'s a tie!' + "🤝🤝🤝";
-    //   return;
-    // }
+
+    // Check if the current player has won the game
     if (checkWin(currentPlayer)) {
       document.getElementById('resultMessage').textContent = "🎉🎉🎉" + currentPlayer + ' (Player ' + (currentPlayer === 'X' ? player1 : player2) + ') wins!' + "🎉🎉🎉";
+      gameOver = true;
       return;
     }
+
+    // Check if the game is a tie
     if (gameBoard.indexOf('') === -1) {
       document.getElementById('resultMessage').textContent = "🤝🤝🤝" + 'It\'s a tie between ' + player1 + ' and ' + player2 + '!' + "🤝🤝🤝";
+      gameOver = true;
       return;
     }
+
+    // Switch to the next player's turn
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 
+    // Check if playing against the computer and it's the computer's turn
     const computerOption = document.querySelector('input[value="comp"]:checked');
     if (computerOption && currentPlayer === 'O') {
       const difficultyLevel = document.querySelector('input[name="difficulty"]:checked').value;
@@ -35,6 +36,7 @@ function makeMove(index) {
   }
 }
 
+// Function to check if a player has won the game
 function checkWin(player) {
   const winningCombinations = [
     [0, 1, 2],
@@ -46,6 +48,7 @@ function checkWin(player) {
     [0, 4, 8],
     [2, 4, 6]
   ];
+
   for (let combination of winningCombinations) {
     if (
       gameBoard[combination[0]] === player &&
@@ -55,9 +58,11 @@ function checkWin(player) {
       return true;
     }
   }
+
   return false;
 }
 
+// Function to reset the game
 function resetGame() {
   gameBoard = ['', '', '', '', '', '', '', '', ''];
   currentPlayer = 'X';
@@ -65,6 +70,7 @@ function resetGame() {
   document.getElementById('gameBoard').innerHTML = '';
 }
 
+// Function to clear the game grid
 function clearGrid() {
   gameBoard = ['', '', '', '', '', '', '', '', ''];
   const cells = document.querySelectorAll('.cell');
@@ -72,8 +78,10 @@ function clearGrid() {
     cell.textContent = '';
   });
   document.getElementById('resultMessage').textContent = '';
+  gameOver = false;
 }
 
+// Function for the computer to make a move based on the selected difficulty level
 function computerMove(difficulty) {
   switch (difficulty) {
     case 'easy':
@@ -91,6 +99,7 @@ function computerMove(difficulty) {
   }
 }
 
+// Function for the computer to make a random move
 function makeRandomMove() {
   const emptyCells = gameBoard.reduce((acc, cell, index) => {
     if (cell === '') {
@@ -98,11 +107,13 @@ function makeRandomMove() {
     }
     return acc;
   }, []);
+
   const randomIndex = Math.floor(Math.random() * emptyCells.length);
   const computerMove = emptyCells[randomIndex];
   makeMove(computerMove);
 }
 
+// Function for the computer to make a smart move
 function makeSmartMove() {
   const winningCombinations = [
     [0, 1, 2],
@@ -118,6 +129,7 @@ function makeSmartMove() {
   // Check if there's a winning move for the computer
   for (let combination of winningCombinations) {
     const [a, b, c] = combination;
+
     if (
       gameBoard[a] === currentPlayer &&
       gameBoard[b] === currentPlayer &&
@@ -145,6 +157,7 @@ function makeSmartMove() {
   // Check if there's a winning move for the opponent and block it
   for (let combination of winningCombinations) {
     const [a, b, c] = combination;
+
     if (
       gameBoard[a] !== currentPlayer &&
       gameBoard[b] !== currentPlayer &&
@@ -173,6 +186,7 @@ function makeSmartMove() {
   makeRandomMove();
 }
 
+// Function for the computer to make a hard move
 function makeHardMove() {
   // Check if the computer can win in the next move
   for (let i = 0; i < 9; i++) {
@@ -222,11 +236,11 @@ function makeHardMove() {
     }
   }
 }
+
+// Function to start the game with the entered player names
 function getValue() {
   var play1 = document.getElementById("player1").value;
   var play2 = document.getElementById("player2").value;
-
-  document.getElementById('Message').textContent = "Let the game begin! " + play1 +"(x)"+ " vs " + play2+"(O)";
-
-  // Rest of your game logic goes here...
+  document.getElementById('Message').textContent = "Let the game begin! " + play1 + "(X)" + " vs " + play2 + "(O)";
+  clearGrid();
 }
