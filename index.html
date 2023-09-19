@@ -8,15 +8,15 @@
 </head>
 
 <body>
-  <div class="bord" resize> ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+  <div class="bord" resize> ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
     <div class="container-body">
       <header>
-        <h1>Tic Tac Toe Game</h1>
-        <p>Player 1 (X) vs. Player 2 (O)</p>
+        <h1><pre style="color: aqua;">Tic-Tac-Toe Game</pre></h1>
+      
       </header>
       <div>
         <ul class="opetion">
-          <li><input type="radio" name="opetion" value="comp">Play with computer </li><br>
+          <li><input type="radio" name="opetion" value="comp" style="cursor: pointer;">Play with computer </li><br>
 
           <div class="difficulty">
             <ul class="opetion">
@@ -25,12 +25,12 @@
               <li><input type="radio" name="difficulty" value="hard" >Hard</li>
             </ul>
           </div><br>
-          <li><input type="radio" name="opetion" value="friend">Play with friend</li><br>
+          <li><input type="radio" name="opetion" value="friend" style="cursor: pointer;">Play with friend</li><br>
           <ul>
-            <input type="text" id="player1" placeholder="Enter 'X' Player Name ">vs
-            <input type="text" id="player2" placeholder="Enter 'O' Player Name "><br><br>
-            <button onclick="getValue()">Start Game</button>
-            <div id="Message"></div>
+            <input type="text" id="player1" placeholder="Player 1 "> vs
+            <input type="text" id="player2" placeholder="Player 2 "><br><br>
+            <button onclick="getValue()" style="cursor: pointer; justify-content: center; color: black; background-color: greenyellow; border-radius: 5px; border: 4px soild;">Start Game</button>
+            <div id="Message" style="text-align: center; padding-top: 10px;"></div>
           </ul>
         </ul>
       </div>
@@ -49,7 +49,7 @@
       </div>
 
       <div class="result">
-        <h2>Result</h2>
+        <h2>Result : </h2>
         <div id="resultMessage"></div>
       </div>
       <center>
@@ -59,9 +59,9 @@
         Made by Saurabh
       </footer>
     </div>
-    ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+    ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
   </div>
-  <!-- <div class="box"></div> -->
+
 </body>
 
 </html>
